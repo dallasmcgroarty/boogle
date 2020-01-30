@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $_SESSION['prev_location'] = 'home'
+?>
 <!DOCTYPE html>
 <html>
 <head>
