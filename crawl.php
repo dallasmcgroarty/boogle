@@ -198,7 +198,7 @@ function followLinks($url) {
     }
 }
 
-$startUrl = "http://a-z-animals.com/";
+$startUrl = "http://www.travelandleisure.com/trip-ideas/best-places-to-travel-in-2020";
 
 followLinks($startUrl);
 

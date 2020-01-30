@@ -1,18 +1,21 @@
 <?php
 include("config.php");
 include("classes/DomDocumentParser.php");
+include("classes/SiteResultsProvider.php");
 
     session_start();
     $check = $_SESSION['prev_location'];
     
     if(empty($_GET["term"]) && $check == 'home') {
         header('Location: index.php');
-        exit();
     }
 
     if(!empty($_GET["term"])) {
         $term = $_GET["term"];
         $_SESSION['prev_location'] = 'search';
+    }
+    else{
+        $term = "";
     }
 
     if(!empty($_GET["type"])) {
@@ -62,6 +65,16 @@ include("classes/DomDocumentParser.php");
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class=mainResults>
+            <?php
+            $results = new SiteResultsProvider($conn);
+
+            if(!empty($term)) {
+                $numResults = $results->getNumResults($term);
+                echo "<p class='resultsCount'>$numResults results found</p>";
+            }
+            ?>
         </div>
     </div>
 </body>
