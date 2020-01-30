@@ -1,4 +1,7 @@
 <?php
+include("config.php");
+include("classes/DomDocumentParser.php");
+
     session_start();
     $check = $_SESSION['prev_location'];
     
