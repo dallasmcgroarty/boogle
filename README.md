@@ -1,6 +1,8 @@
 # boogle
 google search engine clone
 
+created using XAMPP, Apache, MySQL, HTML, CSS, Javascript, and PHP.
+
 front end designed to look like google.com
 
 web crawler in php that recursively gathers urls to read html document data like the url, title, description, alt, img
