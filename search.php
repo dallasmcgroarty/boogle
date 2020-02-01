@@ -22,7 +22,7 @@ include("classes/SiteResultsProvider.php");
         $type = $_GET["type"];
     }
     else {
-        $types = "sites";
+        $type = "sites";
     }
 ?>
 <!DOCTYPE html>
