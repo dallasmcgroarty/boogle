@@ -96,9 +96,6 @@ include("classes/SiteResultsProvider.php");
 
                 $pagesToShow = 10;
                 $numPages = ceil($numResults / $pageSize);
-                if($numPages == 0) {
-                    $numPages = 1;
-                }
                 $pagesLeft = min($pagesToShow, $numPages);
                 $currentPage = $page - floor($pagesToShow / 2);
                 if($currentPage < 1) {
@@ -106,7 +103,7 @@ include("classes/SiteResultsProvider.php");
                 }
 
                 if($currentPage + $pagesLeft > $numPages + 1) {
-                    $currentPage = $numPages - $pagesLeft;
+                    $currentPage = $numPages + 1 - $pagesLeft;
                 }
             
                 while ($pagesLeft != 0 && $currentPage <= $numPages) {
