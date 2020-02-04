@@ -189,5 +189,39 @@ html,body {
 .resultsCount {
     font-size: 13px;
     color: #808080;
-    margin-left: 140px;
+    margin-left: 138px;
+}
+
+.siteResults {
+    margin-left: 150px;
+}
+
+.resultsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 26px;
+}
+
+.resultsContainer .title {
+    margin: 0;
+}
+
+.resultsContainer .title a {
+    color: #1a0dab;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.resultsContainer .title a:hover {
+    text-decoration: underline;
+}
+
+.resultsContainer .url {
+    color: #006621;
+    font-size: 14px;
+}
+
+.resultsContainer .description {
+    font-size: 12px;
 }

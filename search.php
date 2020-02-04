@@ -73,6 +73,7 @@ include("classes/SiteResultsProvider.php");
             if(!empty($term)) {
                 $numResults = $results->getNumResults($term);
                 echo "<p class='resultsCount'>$numResults results found</p>";
+                echo $results->getResultsHtml(1,20,$term);
             }
             ?>
         </div>
