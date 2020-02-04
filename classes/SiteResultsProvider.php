@@ -46,12 +46,12 @@ class SiteResultsProvider {
             $description = $this->trimField($description, 230);
 
             $resultsHtml .= "<div class='resultsContainer'>
+                                <span class='url'>$url</span>
                                 <h3 class='title'>
                                     <a class='result' href='$url'>
                                         $title
                                     </a>
                                 </h3>
-                                <span class='url'>$url</span>
                                 <span class='description'>$description</span>
                             </div>";
         }
