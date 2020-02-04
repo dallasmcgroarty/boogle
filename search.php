@@ -18,6 +18,13 @@ include("classes/SiteResultsProvider.php");
         $term = "";
     }
 
+    if(!empty($_GET["page"])){
+        $page = $_GET["page"];
+    }
+    else {
+        $page = 1;
+    }
+
     if(!empty($_GET["type"])) {
         $type = $_GET["type"];
     }
@@ -44,7 +51,7 @@ include("classes/SiteResultsProvider.php");
                 <div class="search">
                     <form action="search.php" method="GET">
                         <div class="searchBar">
-                            <input class="searchInput" type="text" name="term">
+                            <input class="searchInput" type="text" name="term" value="<?php echo $term ?>">
                             <button class="searchBtn">
                                 <img src="assets/images/search_icon.png" alt="search icon from icons8.com https://icons8.com/icons/set/search">
                             </button>
@@ -70,13 +77,63 @@ include("classes/SiteResultsProvider.php");
         <div class=mainResults>
             <?php
             $results = new SiteResultsProvider($conn);
+            $pageSize = 20;
 
             if(!empty($term)) {
                 $numResults = $results->getNumResults($term);
                 echo "<p class='resultsCount'>$numResults results found</p>";
-                echo $results->getResultsHtml(1,20,$term);
+                echo $results->getResultsHtml($page,$pageSize,$term);
             }
             ?>
+        </div>
+
+        <div class="pagination">
+            <div class="pageBtns">
+                <div class="pageNum">
+                    <img src="assets/images/pageStart.png">
+                </div>
+                <?php
+
+                $pagesToShow = 10;
+                $numPages = ceil($numResults / $pageSize);
+                if($numPages == 0) {
+                    $numPages = 1;
+                }
+                $pagesLeft = min($pagesToShow, $numPages);
+                $currentPage = $page - floor($pagesToShow / 2);
+                if($currentPage < 1) {
+                    $currentPage = 1;
+                }
+
+                if($currentPage + $pagesLeft > $numPages + 1) {
+                    $currentPage = $numPages - $pagesLeft;
+                }
+            
+                while ($pagesLeft != 0 && $currentPage <= $numPages) {
+
+                    if($currentPage == $page) {
+                        echo "<div class='pageNum'>
+                                <img src='assets/images/pageSelected.png'>
+                                <span class='number'>$currentPage</span>
+                            </div>";
+                    }
+                    else {
+                        echo "<div class='pageNum'>
+                                <a href='search.php?term=$term&type=$type&page=$currentPage'>
+                                    <img src='assets/images/page.png'>
+                                    <span class='number'>$currentPage</span>
+                                </a>
+                            </div>";
+                    }
+                    $currentPage ++;
+                    $pagesLeft--;
+                }
+
+                ?>
+                <div class="pageNum">
+                    <img src="assets/images/pageEnd.png">
+                </div>
+            </div>
         </div>
     </div>
 </body>
