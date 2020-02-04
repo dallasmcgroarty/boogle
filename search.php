@@ -2,6 +2,7 @@
 include("config.php");
 include("classes/DomDocumentParser.php");
 include("classes/SiteResultsProvider.php");
+include("classes/ImageResultsProvider.php");
 
     session_start();
     $check = $_SESSION['prev_location'];
@@ -37,6 +38,7 @@ include("classes/SiteResultsProvider.php");
 <head>
     <title>Boogle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css?ts=<?=time()?>">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
@@ -78,9 +80,15 @@ include("classes/SiteResultsProvider.php");
         </div>
         <div class=mainResults>
             <?php
-            $results = new SiteResultsProvider($conn);
-            $pageSize = 20;
-
+            if($type == "sites") {
+                $results = new SiteResultsProvider($conn);
+                $pageSize = 20;
+            }
+            else {
+                $results = new ImageResultsProvider($conn);
+                $pageSize = 30;
+            }
+            
             if(!empty($term)) {
                 $numResults = $results->getNumResults($term);
                 echo "<p class='resultsCount'>$numResults results found</p>";
@@ -135,6 +143,8 @@ include("classes/SiteResultsProvider.php");
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>

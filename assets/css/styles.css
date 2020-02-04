@@ -260,3 +260,36 @@ html,body {
 a .number {
     color: #4285f4;
 }
+
+.mainResults .imageResults {
+    margin: 20px;
+}
+
+.gridItem {
+    position: relative;
+}
+
+.gridItem img {
+    max-width: 200px;
+    min-width: 50px;
+    visibility: hidden;
+}
+
+.gridItem .details {
+    position: absolute;
+    bottom: 3px;
+    left: 0px;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 11px;
+    padding: 3px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    visibility: hidden;
+}
+
+.gridItem:hover .details {
+    visibility: visible;
+}
