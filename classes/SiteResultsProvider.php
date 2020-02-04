@@ -42,6 +42,9 @@ class SiteResultsProvider {
             $title = $row["title"];
             $description = $row["description"];
 
+            $title = $this->trimField($title, 55);
+            $description = $this->trimField($description, 230);
+
             $resultsHtml .= "<div class='resultsContainer'>
                                 <h3 class='title'>
                                     <a class='result' href='$url'>
@@ -57,5 +60,9 @@ class SiteResultsProvider {
         return $resultsHtml;
     }
 
+    private function trimField($string, $charLimit) {
+        $dots = strlen($string) > $charLimit ? "..." : "";
+        return substr($string, 0, $charLimit) . $dots;
+    }
 }
 ?>
