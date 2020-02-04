@@ -11,7 +11,7 @@ include("classes/SiteResultsProvider.php");
     }
 
     if(!empty($_GET["term"])) {
-        $term = $_GET["term"];
+        $term = trim($_GET["term"]);
         $_SESSION['prev_location'] = 'search';
     }
     else{
@@ -38,6 +38,7 @@ include("classes/SiteResultsProvider.php");
     <title>Boogle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css?ts=<?=time()?>">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -51,6 +52,7 @@ include("classes/SiteResultsProvider.php");
                 <div class="search">
                     <form action="search.php" method="GET">
                         <div class="searchBar">
+                            <input type="hidden" name="type" value=<?php echo$type ?>>
                             <input class="searchInput" type="text" name="term" value="<?php echo $term ?>">
                             <button class="searchBtn">
                                 <img src="assets/images/search_icon.png" alt="search icon from icons8.com https://icons8.com/icons/set/search">
@@ -133,5 +135,6 @@ include("classes/SiteResultsProvider.php");
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>

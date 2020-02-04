@@ -1,4 +1,5 @@
 <?php
+// web crawler to get url and site info
 include("config.php");
 include("classes/DomDocumentParser.php");
 

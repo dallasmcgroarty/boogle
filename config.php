@@ -1,4 +1,5 @@
 <?php
+// database connection file
 ob_start();
 
 try {
