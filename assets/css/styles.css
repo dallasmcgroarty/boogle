@@ -189,11 +189,11 @@ html,body {
 .resultsCount {
     font-size: 13px;
     color: #808080;
-    margin-left: 138px;
+    margin-left: 130px;
 }
 
 .siteResults {
-    margin-left: 150px;
+    margin-left: 130px;
 }
 
 .resultsContainer {
@@ -202,26 +202,26 @@ html,body {
     margin-bottom: 26px;
 }
 
-.title {
+.resultsContainer .title {
     margin: 0;
 }
 
-.title a {
+.resultsContainer .title a {
     color: #1a0dab;
     text-decoration: none;
     font-weight: normal;
     font-size: 18px;
 }
 
-.title a:hover {
+.resultsContainer .title a:hover {
     text-decoration: underline;
 }
 
-.url {
+.resultsContainer .url {
     color: #006621;
     font-size: 14px;
 }
 
-.description {
+.resultsContainer .description {
     font-size: 12px;
 }
