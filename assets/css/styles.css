@@ -97,6 +97,11 @@ html,body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 630px;
+}
+
+.joke {
+    text-align: center;
 }
 
 .logo img {

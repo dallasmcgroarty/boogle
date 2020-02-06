@@ -33,18 +33,19 @@
                     $opts = array(
                         'http'=>array(
                             'method'=>'GET',
-                            'header'=>'Accept: text/plain'
+                            'header'=>'Accept: application/json'// or use plain/text
                         )
                     );
                   
                     if(isset($_POST["getJoke"])) {
                         $context = stream_context_create($opts);
                         $res = file_get_contents("https://icanhazdadjoke.com/", false, $context);
-                        echo "<p>$res</p>";
+                        $res = json_decode($res);
+                        echo "<p class='joke'>$res->joke</p>";
                     }
                 ?>
                 <input type='hidden' name="getJoke" value="submit">
-                <input class="dadBtn" type="submit" value="Sure">
+                <input class="dadBtn" type="submit" value="<?php if(isset($_POST["getJoke"])){echo 'Again?';} else{echo 'Sure';}?>">
             </form>
         </div>
     </div>
