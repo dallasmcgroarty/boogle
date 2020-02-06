@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION['prev_location'] = 'home'
+    $_SESSION['prev_location'] = 'home';
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +24,28 @@
                     <input class="searchBtn" type="submit" value="Search">
                 </form>
             </div>
+        </div>
+        <!-- Dad joke request -->
+        <div class="dad-joke">
+            <form action="" method="POST">
+                <p>Would you like to hear a dad joke?</p>
+                <?php
+                    $opts = array(
+                        'http'=>array(
+                            'method'=>'GET',
+                            'header'=>'Accept: text/plain'
+                        )
+                    );
+                  
+                    if(isset($_POST["getJoke"])) {
+                        $context = stream_context_create($opts);
+                        $res = file_get_contents("https://icanhazdadjoke.com/", false, $context);
+                        echo "<p>$res</p>";
+                    }
+                ?>
+                <input type='hidden' name="getJoke" value="submit">
+                <input class="dadBtn" type="submit" value="Sure">
+            </form>
         </div>
     </div>
 </body>
