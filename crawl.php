@@ -199,7 +199,7 @@ function followLinks($url) {
     }
 }
 
-$startUrl = "http://www.travelandleisure.com/trip-ideas/best-places-to-travel-in-2020";
+$startUrl = "https://www.google.com/search?safe=off&source=hp&ei=x5w8Xse4KdjY-wT19JXQDw&q=netflix&oq=netflix&gs_l=psy-ab.3..0j0i131j0l4j0i131j0l3.32775.34135..35110...0.0..0.102.507.6j1......0....1..gws-wiz.8xCZ9iTLbDQ&ved=0ahUKEwiHuJf6hb7nAhVY7J4KHXV6BfoQ4dUDCAg&uact=5";
 
 followLinks($startUrl);
 

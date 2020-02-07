@@ -218,6 +218,7 @@ html,body {
 
 .siteResults {
     margin-left: 130px;
+    margin-right: 1000px;
 }
 
 .resultsContainer {
@@ -316,4 +317,9 @@ a .number {
 
 .gridItem:hover .details {
     visibility: visible;
+}
+
+#loc {
+    visibility: hidden;
+    display: none;
 }

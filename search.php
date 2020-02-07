@@ -32,6 +32,15 @@ include("classes/ImageResultsProvider.php");
     else {
         $type = "sites";
     }
+
+    if(!empty($_SESSION['lat']) && !empty($_SESSION['lon'])){
+        $lat = $_SESSION['lat'];
+        $lon = $_SESSION['lon'];
+    }
+    else {
+        $lat = '';
+        $lon = '';
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,6 +50,8 @@ include("classes/ImageResultsProvider.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css?ts=<?=time()?>">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/weather.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -75,6 +86,12 @@ include("classes/ImageResultsProvider.php");
                             Images
                         </a>
                     </li>
+                    <p id='loc'></p>
+                    <?php
+                    // testing latitude and longitude for weather api
+                    echo $lat . ', ' . $lon;
+                    
+                    ?>
                 </ul>
             </div>
         </div>
@@ -93,6 +110,10 @@ include("classes/ImageResultsProvider.php");
                 $numResults = $results->getNumResults($term);
                 echo "<p class='resultsCount'>$numResults results found</p>";
                 echo $results->getResultsHtml($page,$pageSize,$term);
+            }
+            else {
+                $numResults = 0;
+                echo "<p class='resultsCount'>$numResults results found</p>";
             }
             ?>
         </div>
@@ -145,6 +166,5 @@ include("classes/ImageResultsProvider.php");
     </div>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>
