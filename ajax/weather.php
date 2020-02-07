@@ -8,7 +8,7 @@
     function outputWeather () {
         $weather = json_decode($_SESSION['weather']);
         $icon = $weather->weather[0]->icon;
-        $temp = $weather->main->temp;
+        $temp = substr(strval($weather->main->temp),0,2);
         $skies = $weather->weather[0]->main;
         echo "
         <div class='weather-wrapper'>
