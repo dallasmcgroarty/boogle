@@ -3,8 +3,9 @@ include("config.php");
 include("classes/DomDocumentParser.php");
 include("classes/SiteResultsProvider.php");
 include("classes/ImageResultsProvider.php");
+include('ajax/weather.php');
 
-    session_start();
+    //session_start();
     $check = $_SESSION['prev_location'];
     
     if(empty($_GET["term"]) && $check == 'home') {
@@ -31,15 +32,6 @@ include("classes/ImageResultsProvider.php");
     }
     else {
         $type = "sites";
-    }
-
-    if(!empty($_SESSION['lat']) && !empty($_SESSION['lon'])){
-        $lat = $_SESSION['lat'];
-        $lon = $_SESSION['lon'];
-    }
-    else {
-        $lat = '';
-        $lon = '';
     }
 ?>
 <!DOCTYPE html>
@@ -86,17 +78,12 @@ include("classes/ImageResultsProvider.php");
                             Images
                         </a>
                     </li>
-                    <p id='loc'></p>
-                    <?php
-                    // testing latitude and longitude for weather api
-                    echo $lat . ', ' . $lon;
-                    
-                    ?>
                 </ul>
             </div>
         </div>
         <div class=mainResults>
             <?php
+            
             if($type == "sites") {
                 $results = new SiteResultsProvider($conn);
                 $pageSize = 20;
@@ -108,7 +95,16 @@ include("classes/ImageResultsProvider.php");
             
             if(!empty($term)) {
                 $numResults = $results->getNumResults($term);
+                
                 echo "<p class='resultsCount'>$numResults results found</p>";
+
+                if($term == 'weather') {
+                    echo "<script type='text/javascript'>
+                            getLocation();
+                        </script>";
+                    outputWeather();
+                }
+
                 echo $results->getResultsHtml($page,$pageSize,$term);
             }
             else {

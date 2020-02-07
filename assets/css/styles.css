@@ -319,7 +319,40 @@ a .number {
     visibility: visible;
 }
 
-#loc {
-    visibility: hidden;
-    display: none;
+.weather {
+    display: flex;
+    align-items:center;
+    margin-left: 20px;
+    padding-bottom: 20px;
+}
+
+.report {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.report .city {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+.report .skies {
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+.weather .temp {
+    font-size: 36px;
+}
+
+.weather-wrapper {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    height: 118px;
+    width: 240px;
+    margin-left: 130px;
+    margin-bottom: 26px;
+    background-color: #fff;
+    border-radius: 5px;
 }
