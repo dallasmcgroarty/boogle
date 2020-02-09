@@ -78,9 +78,20 @@ include('ajax/weather.php');
                             Images
                         </a>
                     </li>
+                    <li class="<?php echo $type == 'maps' ? 'active': '' ?>"> 
+                        <a href='<?php echo "search.php?term=$term&type=maps"; ?>'>
+                            Maps
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
+        <?php
+            // if search type is maps dont run main results section
+            if($_GET['type'] == 'maps') {
+                exit();
+            }
+        ?>
         <div class=mainResults>
             <?php
             

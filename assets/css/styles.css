@@ -218,7 +218,7 @@ html,body {
 
 .siteResults {
     margin-left: 130px;
-    margin-right: 1000px;
+    width: 60%;
 }
 
 .resultsContainer {
