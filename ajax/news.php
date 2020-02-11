@@ -1,7 +1,7 @@
 <?php
 
-function getNews($term) {
-    $url = "https://newsapi.org/v2/everything?q=$term&sortBy=popularity&apiKey=c939c288f98045d7a57360fef3f39d25";
+function getNews($term,$page) {
+    $url = "https://newsapi.org/v2/everything?q=$term&page=$page&sortBy=popularity&apiKey=c939c288f98045d7a57360fef3f39d25";
                 
     $cSession = curl_init(); 
 
@@ -14,10 +14,24 @@ function getNews($term) {
     curl_close($cSession);
 
     $result = json_decode($result);
-    //print_r($result);
-    for ($i=0; $i < 10; $i++) {
-        echo $result->articles[$i]->source->name . ' ' . 
-            $result->articles[$i]->author . '<br>';
+    
+    //printNews($result);
+
+    return $result;
+}
+
+function printNews($data, $size) {
+    //print_r($data);
+    if($size > 20) {
+        $size = 20;
     }
+    for ($i=0; $i < $size; $i++) {
+        echo $data->articles[$i]->source->name . ' ' . 
+            $data->articles[$i]->author . '<br>';
+    }
+}
+
+function getTotalResults($term) {
+
 }
 ?>

@@ -356,3 +356,10 @@ a .number {
     background-color: #fff;
     border-radius: 5px;
 }
+
+.newsAtt {
+    text-decoration: none;
+    font-size: 13px;
+    color: #808080;
+    margin-left: 130px;
+}

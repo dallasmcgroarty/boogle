@@ -44,7 +44,6 @@ include('ajax/news.php');
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css?ts=<?=time()?>">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
-    <script type="text/javascript" src="assets/js/news.js"></script>
     <script type="text/javascript" src="assets/js/weather.js"></script>
 </head>
 <body>
@@ -98,15 +97,11 @@ include('ajax/news.php');
             if($type == 'maps') {
                 exit();
             }
-            if($type == 'news') {
-                getNews($term);
-                exit();
-            }
         ?>
         <div class=mainResults>
             <?php
             
-            if($type == "sites") {
+            if($type == "sites" || $type == 'news') {
                 $results = new SiteResultsProvider($conn);
                 $pageSize = 20;
             }
@@ -115,7 +110,7 @@ include('ajax/news.php');
                 $pageSize = 30;
             }
             
-            if(!empty($term)) {
+            if(!empty($term) && $type != 'news') {
                 $numResults = $results->getNumResults($term);
                 
                 echo "<p class='resultsCount'>$numResults results found</p>";
@@ -128,6 +123,21 @@ include('ajax/news.php');
                 }
 
                 echo $results->getResultsHtml($page,$pageSize,$term);
+            }
+            else if(!empty($term) && $type == 'news') {
+                $result = getNews($term,$page);
+                if($result->totalResults > 100) {
+                    $numResults = 100;
+                }
+                else{
+                    $numResults = $result->totalResults;
+                }
+
+                echo "<p class='resultsCount'>$numResults results found</p>";
+                echo "<a class='newsAtt' href='https://newsapi.org/'>News by News API</a>";
+                echo '<br><br> News Under Development! <br><br>';
+
+                printNews($result, $numResults);
             }
             else {
                 $numResults = 0;
