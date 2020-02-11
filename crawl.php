@@ -199,7 +199,7 @@ function followLinks($url) {
     }
 }
 
-$startUrl = "https://www.msn.com/en-us/sports";
+$startUrl = "";
 
 followLinks($startUrl);
 

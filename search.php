@@ -43,6 +43,7 @@ include('ajax/weather.php');
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css?ts=<?=time()?>">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/news.js"></script>
     <script type="text/javascript" src="assets/js/weather.js"></script>
 </head>
 <body>
@@ -78,6 +79,11 @@ include('ajax/weather.php');
                             Images
                         </a>
                     </li>
+                    <li class="<?php echo $type == 'news' ? 'active': '' ?>"> 
+                        <a href='<?php echo "search.php?term=$term&type=news"; ?>'>
+                            News
+                        </a>
+                    </li>
                     <li class="<?php echo $type == 'maps' ? 'active': '' ?>"> 
                         <a href='<?php echo "search.php?term=$term&type=maps"; ?>'>
                             Maps
@@ -88,7 +94,28 @@ include('ajax/weather.php');
         </div>
         <?php
             // if search type is maps dont run main results section
-            if($_GET['type'] == 'maps') {
+            if($type == 'maps') {
+                exit();
+            }
+            if($type == 'news') {
+                $url = "https://newsapi.org/v2/everything?q=$term&sortBy=popularity&apiKey=c939c288f98045d7a57360fef3f39d25";
+                
+                $cSession = curl_init(); 
+                
+                curl_setopt($cSession,CURLOPT_URL,$url);
+                curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
+                curl_setopt($cSession,CURLOPT_HEADER, false); 
+                
+                $result=curl_exec($cSession);
+                
+                curl_close($cSession);
+                
+                $result = json_decode($result);
+                //print_r($result);
+                for ($i=0; $i < 10; $i++) {
+                    echo $result->articles[$i]->source->name . ' ' . 
+                        $result->articles[$i]->author . '<br>';
+                }
                 exit();
             }
         ?>
@@ -109,7 +136,7 @@ include('ajax/weather.php');
                 
                 echo "<p class='resultsCount'>$numResults results found</p>";
 
-                if($term == 'weather') {
+                if($term == 'weather' && $type=='sites') {
                     echo "<script type='text/javascript'>
                             getLocation();
                         </script>";
