@@ -363,3 +363,31 @@ a .number {
     color: #808080;
     margin-left: 130px;
 }
+
+@media only screen and (max-width: 768px) {
+
+    .weather-wrapper, .newsAtt, .siteResults, .resultsCount {
+        margin-left: 70px;
+    }
+
+    .headerContent .searchBar {
+        width: 90%;
+        /*max-width: 630px;*/
+    }
+
+    .headerContent .searchBar .searchBtn {
+        height: 40px;
+        margin-top: 2px;
+        width: 36px;
+    }
+
+    .headerContent .searchBar .searchBtn img {
+        width: 20px;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: center;
+        margin-left: 5px;
+    }
+}
