@@ -115,7 +115,7 @@ include('ajax/news.php');
                 
                 echo "<p class='resultsCount'>$numResults results found</p>";
 
-                if($term == 'weather' && $type=='sites') {
+                if(($term == 'weather' || $term == 'Weather') && $type=='sites') {
                     echo "<script type='text/javascript'>
                             getLocation();
                         </script>";

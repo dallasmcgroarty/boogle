@@ -367,11 +367,11 @@ a .number {
 @media only screen and (max-width: 768px) {
 
     .weather-wrapper, .newsAtt, .siteResults, .resultsCount {
-        margin-left: 70px;
+        margin-left: 65px;
     }
 
     .headerContent .searchBar {
-        width: 90%;
+        width: 100%;
         /*max-width: 630px;*/
     }
 
@@ -379,6 +379,7 @@ a .number {
         height: 40px;
         margin-top: 2px;
         width: 36px;
+        padding-right: 20px;
     }
 
     .headerContent .searchBar .searchBtn img {
@@ -388,6 +389,10 @@ a .number {
     .tabs {
         display: flex;
         justify-content: center;
-        margin-left: 5px;
+        margin-left: 0px;
+    }
+
+    .mainResults .imageResults {
+        margin-left: 65px;
     }
 }
