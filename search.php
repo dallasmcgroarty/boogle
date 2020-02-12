@@ -101,9 +101,12 @@ include('ajax/news.php');
         <div class=mainResults>
             <?php
             
-            if($type == "sites" || $type == 'news') {
+            if($type == "sites") {
                 $results = new SiteResultsProvider($conn);
                 $pageSize = 20;
+            }
+            else if($type == 'news') {
+                $pageSize = 10;
             }
             else {
                 $results = new ImageResultsProvider($conn);
@@ -125,7 +128,10 @@ include('ajax/news.php');
                 echo $results->getResultsHtml($page,$pageSize,$term);
             }
             else if(!empty($term) && $type == 'news') {
-                $result = getNews($term,$page);
+                $result = getNews($term,$page,$pageSize);
+                if(!$result) {
+                    exit();
+                }
                 if($result->totalResults > 100) {
                     $numResults = 100;
                 }
@@ -134,10 +140,11 @@ include('ajax/news.php');
                 }
 
                 echo "<p class='resultsCount'>$numResults results found</p>";
-                echo "<a class='newsAtt' href='https://newsapi.org/'>News by News API</a>";
-                echo '<br><br> News Under Development! <br><br>';
+                echo "<div class='newsApiWrap'>
+                <a class='newsAtt' href='https://newsapi.org/'>News by News API</a>
+                    </div>";
 
-                printNews($result, $numResults);
+                printNews($result, min($pageSize,$numResults));
             }
             else {
                 $numResults = 0;
