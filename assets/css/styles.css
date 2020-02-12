@@ -402,8 +402,11 @@ a .number {
 }
 
 .newsImage {
+    position: relative;
+    display: block;
     height: 112px;
     width: 112px;
+    min-width: 112px;
     padding: 16px;
     border-radius: 25px;
 }

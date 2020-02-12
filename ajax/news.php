@@ -1,6 +1,7 @@
 <?php
 
 function getNews($term,$page, $pageSize) {
+    $term = str_replace(' ', '+', $term);
     $url = "https://newsapi.org/v2/everything?q=$term&page=$page&pageSize=$pageSize&sortBy=relevancy&apiKey=c939c288f98045d7a57360fef3f39d25";
                 
     $cSession = curl_init(); 
