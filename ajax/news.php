@@ -37,6 +37,7 @@ function printNews($data, $size) {
         $source = $data->articles[$i]->source->name;
         $url = $data->articles[$i]->url;
         $title = $data->articles[$i]->title;
+        $title = trimField($title, 81);
         $desc = $data->articles[$i]->description;
         $desc = trimField($desc, 130);
         

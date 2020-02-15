@@ -481,4 +481,41 @@ a .number {
     .mainResults .imageResults {
         margin-left: 65px;
     }
+
+    .newsCard {
+        margin-left: 6px;
+        width: 360px;
+        max-height: 166px;
+    }
+
+    .newsWrap {
+        max-height: 166px;
+        width: 360px;
+    }
+
+    .news-info {
+        max-height: 166px;
+        width: 260px;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    
+    .newsImage {
+        position: relative;
+        display: block;
+        height: 88px;
+        width: 88px;
+        min-width: 64px;
+        padding: 4px;
+        border-radius: 25px;
+        box-sizing: border-box;
+    }
+
+    .news-title {
+        font-size: 16px;
+    }
+
+    .newsDesc {
+        font-size: 12px;
+    }
 }
