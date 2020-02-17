@@ -1,9 +1,15 @@
 <?php
 
 function getNews($term,$page, $pageSize) {
-    $term = str_replace(' ', '+', $term);
+    // if term is empty, get top news headlines instead
+    if(empty($term)) {
+        $url = "https://newsapi.org/v2/top-headlines?country=us&page=$page&pageSize=$pageSize&apiKey=c939c288f98045d7a57360fef3f39d25";
+    }
+    else {
+        $term = str_replace(' ', '+', $term);
     $url = "https://newsapi.org/v2/everything?q=$term&page=$page&pageSize=$pageSize&sortBy=relevancy&apiKey=c939c288f98045d7a57360fef3f39d25";
-                
+    }
+    // set up curl and make a request            
     $cSession = curl_init(); 
 
     curl_setopt($cSession,CURLOPT_URL,$url);
@@ -24,6 +30,10 @@ function getNews($term,$page, $pageSize) {
     return $result;
 }
 
+/**
+ * given the json data returned from the news api call,
+ * format the data and output in html
+ */
 function printNews($data, $size) {
     if(!$data) {
         return;

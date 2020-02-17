@@ -127,7 +127,7 @@ include('ajax/news.php');
 
                 echo $results->getResultsHtml($page,$pageSize,$term);
             }
-            else if(!empty($term) && $type == 'news') {
+            else if($type == 'news') {
                 $result = getNews($term,$page,$pageSize);
                 if(!$result) {
                     exit();

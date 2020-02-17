@@ -5,6 +5,7 @@
         $weather = $_SESSION['weather'];
     }
 
+    // output weather data in html
     function outputWeather () {
         @$weather = json_decode($_SESSION['weather']);
         @$icon = $weather->weather[0]->icon;
