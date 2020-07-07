@@ -61,7 +61,7 @@ include('ajax/news.php');
                             <input type="hidden" name="type" value=<?php echo$type ?>>
                             <input class="searchInput" type="text" name="term" value="<?php echo $term ?>">
                             <button class="searchBtn">
-                                <img src="assets/images/search_icon.png" alt="search icon from icons8.com https://icons8.com/icons/set/search">
+                                <img src="assets/images/search_icon.png" class="searchIcon" alt="search icon from icons8.com https://icons8.com/icons/set/search">
                             </button>
                         </div>
                     </form>

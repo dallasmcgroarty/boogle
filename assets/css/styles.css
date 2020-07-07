@@ -54,6 +54,10 @@ html,body {
     visibility: hidden;
 }
 
+.searchIcon {
+    margin: auto;
+}
+
 .main .search .searchBtn:hover, .dadBtn:hover{
     color: rgb(46, 45, 45);
     border-style: solid;
