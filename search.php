@@ -46,7 +46,7 @@ include('ajax/news.php');
     <script type="text/javascript" src="assets/js/script.js"></script>
     <script type="text/javascript" src="assets/js/weather.js"></script>
     <script type="text/javascript" src="assets/js/maps.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1D783KDJ-omn2nbMH95HP0LaC8jN3qcM&callback=createMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key="></script>
 </head>
 <body>
     <div class="wrapper">
