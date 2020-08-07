@@ -43,10 +43,11 @@ include('ajax/news.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css?ts=<?=time()?>">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
     <script type="text/javascript" src="assets/js/weather.js"></script>
     <script type="text/javascript" src="assets/js/maps.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key="></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=createMap&libraries=places"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -61,7 +62,7 @@ include('ajax/news.php');
                     <form action="search.php" method="GET">
                         <div class="searchBar">
                             <input type="hidden" name="type" value=<?php echo$type ?>>
-                            <input class="searchInput" type="text" name="term" value="<?php echo $term ?>">
+                            <input class="searchInput" type="text" id="searchInput" name="term" value="<?php echo $term ?>"/>
                             <button class="searchBtn">
                                 <img src="assets/images/search_icon.png" class="searchIcon" alt="search icon from icons8.com https://icons8.com/icons/set/search">
                             </button>
