@@ -45,6 +45,8 @@ include('ajax/news.php');
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
     <script type="text/javascript" src="assets/js/weather.js"></script>
+    <script type="text/javascript" src="assets/js/maps.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1D783KDJ-omn2nbMH95HP0LaC8jN3qcM&callback=createMap"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -95,6 +97,7 @@ include('ajax/news.php');
         <?php
             // if search type is maps dont run main results section
             if($type == 'maps') {
+                echo "<div id='map'></div>";
                 exit();
             }
         ?>

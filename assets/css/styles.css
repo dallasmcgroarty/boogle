@@ -454,6 +454,10 @@ a .number {
     overflow: hidden;
 } */
 
+#map {
+    height: 800px;
+}
+
 @media only screen and (max-width: 768px) {
 
     .weather-wrapper, .newsAtt, .siteResults, .resultsCount {
@@ -521,5 +525,9 @@ a .number {
 
     .newsDesc {
         font-size: 12px;
+    }
+
+    #map {
+        height: 600px;
     }
 }
