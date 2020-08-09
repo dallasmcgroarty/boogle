@@ -456,6 +456,7 @@ a .number {
 
 #map {
     height: 800px;
+    margin: 16px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -527,7 +528,12 @@ a .number {
         font-size: 12px;
     }
 
+    .search {
+        padding-right: 10px;
+    }
+
     #map {
         height: 600px;
+        margin: 0;
     }
 }
