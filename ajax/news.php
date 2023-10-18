@@ -14,6 +14,7 @@ function getNews($term,$page, $pageSize) {
 
     curl_setopt($cSession,CURLOPT_URL,$url);
     curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($cSession, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0');
     curl_setopt($cSession,CURLOPT_HEADER, false); 
 
     $result=curl_exec($cSession);
